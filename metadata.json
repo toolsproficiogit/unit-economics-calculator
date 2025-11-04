@@ -1,0 +1,5 @@
+{
+  "name": "PPC Marketing Calculator",
+  "description": "An interactive calculator to predict marketing campaign performance based on key metrics like Search Volume, CTR, CPC, CVR, and AOV. See detailed calculations for conversions, revenue, costs, PNO, and CPA.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PPC Marketing Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+<style>
+    @keyframes fall {
+      from {
+        transform: translateY(0vh);
+      }
+      to {
+        transform: translateY(110vh);
+      }
+    }
+    @keyframes flutter {
+      0% {
+        transform: translateY(-10vh) translateX(0) rotateZ(0deg) rotateX(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) translateX(var(--horizontal-drift, 0)) rotateZ(360deg) rotateX(180deg);
+      }
+      100% {
+        transform: translateY(110vh) translateX(0) rotateZ(720deg) rotateX(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-[#083028]">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
