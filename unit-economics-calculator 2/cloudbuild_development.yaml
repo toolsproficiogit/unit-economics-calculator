@@ -1,0 +1,43 @@
+# cloudbuild.yaml
+steps:
+  # 1) Build container image
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'Build image'
+    args:
+      [
+        'build',
+        '-t',
+        'europe-west1-docker.pkg.dev/$PROJECT_ID/web-apps/unit-economics-calculator:$SHORT_SHA',
+        '.'
+      ]
+
+  # 2) Push image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'Push image'
+    args:
+      [
+        'push',
+        'europe-west1-docker.pkg.dev/$PROJECT_ID/web-apps/unit-economics-calculator:$SHORT_SHA'
+      ]
+
+  # 3) Deploy to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: 'Deploy to Cloud Run'
+    args:
+      [
+        'run',
+        'deploy',
+        'unit-economics-calculator',
+        '--image',
+        'europe-west1-docker.pkg.dev/$PROJECT_ID/web-apps/unit-economics-calculator:$SHORT_SHA',
+        '--region',
+        'europe-west1',
+        '--platform',
+        'managed',
+        '--allow-unauthenticated',
+        '--port',
+        '8080'
+      ]
+
+images:
+  - 'europe-west1-docker.pkg.dev/$PROJECT_ID/web-apps/unit-economics-calculator:$SHORT_SHA'
